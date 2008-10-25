@@ -1,0 +1,51 @@
+#!/usr/local/bin/perl -w
+use strict;
+use Getopt::Long;
+
+my $VAR = 'PATH';
+my $OFFSET = 0;
+my $LENGTH = 0;
+my $EXECUTABLE = '';
+my $EVAL = 1;
+
+my @LIST;
+
+GetOptions(
+  '-variable=s'   => \$VAR,
+  '-offset=i'     => \$OFFSET,
+  '-length=i'     => \$LENGTH,
+  '-executable=s' => \$EXECUTABLE,
+  '-bashsource!'  => \$EVAL,
+);
+my @P = split ':', $ENV{$VAR};
+local $" = ':';
+if ($EXECUTABLE) {
+  @LIST = `$EXECUTABLE`;
+  chomp @LIST;
+}
+else {
+  @LIST = @ARGV
+}
+splice @P, $OFFSET, $LENGTH, @LIST;
+if ($EVAL) {
+  print "$VAR=@P;export $VAR";
+}
+else {
+  print "@P";
+}
+
+__END__
+
+=head1 NAME 
+
+splicepath - Returns a string with the spliced PATH
+
+=head1 SYNOPSIS
+
+  $ eval `splicepath -V PERL5LIB -o 0 -l 1 ~/src/perl/Parse-Eyapp-1.113/lib`
+
+  '-variable=s' => \$VAR,
+  '-offset=i'   => \$OFFSET,
+  '-length=i'   => \$LENGTH,
+  '-executable=s'   => \$EXECUTABLE,
+  '-bashsource!'      => \$EVAL,

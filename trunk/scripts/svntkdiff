@@ -1,0 +1,38 @@
+#!/usr//bin/perl -w
+use strict;
+use File::Temp;
+
+my $diff = $ENV{DIFF} || 'tkdiff';
+my $svnexport = $ENV{SVNEXPORT} || 'svn export';
+
+my $file = pop;
+my $dir = File::Temp->newdir();
+my $fname = "$dir/repository_${file}";
+my $argv = "@ARGV";
+
+$argv = "-r HEAD $argv" unless $argv =~ m{-r\s+\d+};
+
+die "Can't export file $file" if system("$svnexport $argv $file $fname");
+exec("$diff $file $fname");
+
+=head1 NAME
+
+svntkdiff - Show the differences between some repository version and the working copy using tkdiff
+
+=head1 SYNOPSIS
+
+    svntkdiff file
+    svntkdiff -r #num file
+
+=head1 DESCRIPTION
+
+=over 2
+
+=item * The environment variable C<DIFF> can be used to set the C<tkdiff> program used.
+By default is C<tkdiff>
+
+=item * The environment variable C<SVNEXPORT> can be used to set the C<svn export> command.
+By default is C<svn export>.
+
+=back
+
