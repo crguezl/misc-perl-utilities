@@ -1,0 +1,6 @@
+Revision history for Perl extension Misc::Utilities.
+
+0.01  Sat Oct 25 12:14:02 2008
+	- original version; created by h2xs 1.23 with options
+		-XA -n Misc::Utilities
+
