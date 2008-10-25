@@ -1,0 +1,39 @@
+#!/usr/bin/perl -w
+
+eval 'exec /usr/bin/perl -w -S $0 ${1+"$@"}'
+    if 0; # not running under some shell
+use strict;
+use ExtUtils::Packlist;
+use ExtUtils::Installed;
+use List::Util qw(first);
+
+$ARGV[0] or die "Usage: $0 Module::Name\n";
+
+my $mod = $ARGV[0]; 
+
+die "Does not looks like a module name" unless $mod =~ m{\w+(::\w+)*};
+
+my $inst = ExtUtils::Installed->new();
+
+    die "Can't find module $mod using .packlist files\n" unless first { /$mod/ } ($inst->modules);
+    foreach my $item (sort($inst->files($mod))) {
+             print "removing $item\n";
+             unlink $item or warn "Can't remove $item try by hand!\n";
+          }
+
+     my $packfile = $inst->packlist($mod)->packlist_file();
+          print "removing $packfile\n";
+          unlink $packfile or warn "Can't remove $packfile try by hand!\n";
+
+=head1 NAME 
+
+pmrm -- remove installed perl distribution module
+
+
+=head1 SYNOPSIS
+
+    pmrm Parse::Eyapp
+
+=head1 AUTHOR
+
+Casiano Rodriguez-Leon
