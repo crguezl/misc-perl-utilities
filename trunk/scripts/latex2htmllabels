@@ -1,0 +1,94 @@
+#!/usr/bin/perl 
+# history: 11-10-2005 use input file instead of parameters
+
+######### main
+use strict;
+use warnings;
+use Carp;
+
+my $latexfile = (shift or croak(&usage())); 
+   $latexfile = $1 if ($latexfile =~ m/(\w+)\.tex$/);
+my $labelsfile;
+{
+  no warnings;
+  $labelsfile = (shift or "$latexfile.labels");
+}
+
+my $alllabels;
+open L2HLABELS, "$latexfile/labels.pl";
+{ 
+  local $/= undef;
+  $alllabels = <L2HLABELS>;
+}
+close L2HLABELS;
+
+open LABELS, "$labelsfile";
+my @labels = <LABELS>;
+chomp(@labels);
+close LABELS;
+
+for my $label (@labels) {
+  my $nodename = &findnode($label);
+  &write_html_redirect_file($label, $nodename) if $nodename;
+}
+
+########## end main
+
+sub usage {
+  return <<"EOI";
+Usage:
+
+$0 texfilename
+
+Where 'texfilename' is the name of the tex file
+without extension. this version assumes that
+latex2html generates a 'labels.pl' file in directory
+'texfilename/' and that you have a 'texfilename.labels'
+file containing the external labels
+(one per line). For example:
+
+\$ ls
+example.tex example.labels
+\$ cat example.labels
+repaso:lasbases
+repaso:fases
+practica:fases
+practica:cadenasycomentarios
+practica:pruebaslexico
+\$
+
+EOI
+}
+
+sub findnode {
+  my $clave = shift;
+
+  $alllabels =~ m{\$key = q\/$clave\/;\n.*(node\d+\.html)};
+  return $1;
+}
+ 
+sub write_html_redirect_file {
+  my ($label, $nodename) = @_;
+
+  my $redirectfile = $label;
+  $redirectfile =~ s/:/_/g;
+  $redirectfile = "$latexfile/".$redirectfile.".html";
+
+  open FILE, "> $redirectfile";
+  print FILE <<"EOI";
+<HTML>
+<HEAD>
+<!-- Author: Casiano R. Leon. -->
+<TITLE>redirect to $nodename</TITLE>
+<META HTTP-EQUIV="refresh"
+CONTENT="0;URL=$nodename">
+</HEAD>
+<BODY>
+El enlace que busca se encuentra en:
+<a href="$nodename">
+$nodename</a>.
+</BODY>
+</HTML>
+EOI
+  close(FILE);
+}
