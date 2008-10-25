@@ -87,6 +87,10 @@ CONTENT="0;URL=$nodename">
 El enlace que busca se encuentra en:
 <a href="$nodename">
 $nodename</a>.
+<p>
+The link you look for can be found at:
+<a href="$nodename">
+$nodename</a>.
 </BODY>
 </HTML>
 EOI
