@@ -5,6 +5,7 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
     NAME              => 'Misc::Utilities',
     VERSION_FROM      => 'lib/Misc/Utilities.pm', # finds $VERSION
+    EXE_FILES         => [ qw(latex2htmllabels pmrm splicepath svntkdiff) ],
     PREREQ_PM         => {}, # e.g., Module::Name => 1.1
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
       (ABSTRACT_FROM  => 'lib/Misc/Utilities.pm', # retrieve abstract from module
