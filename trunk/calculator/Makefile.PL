@@ -3,12 +3,12 @@ use strict;
 
 use ExtUtils::MakeMaker;
 
-my $PUBLIC_PLACE = "/home/$ENV{USER}/public_html/perlexamples/";
-my $MACHINES = 'orion beowulf';
+my $PUBLIC_PLACE = $ENV{PUBLIC_PLACE} || "/home/$ENV{USER}/public_html/perlexamples/";
+my $MACHINES     = $ENV{REMOTEMACHINES} || 'orion beowulf';
 
 WriteMakefile(
     NAME              => 'Math::Calc',
-    VERSION           => '1.0',
+    VERSION_FROM      => 'lib/Math/Calc.eyp',
     PREREQ_PM         => {}, # e.g., Module::Name => 1.1
     EXE_FILES         => [ 'scripts/calc.pl' ],
     ABSTRACT_FROM     => 'lib/Math/Calc.pod', # retrieve abstract from pod
@@ -36,7 +36,10 @@ EYAPPFLAGS=-m Math::Calc ${EYAPPENV}
 	perl -Ilib -c $@
 
 calc: lib/Math/Calc.pm 
-lib/Math/Calc.pm: lib/Math/Tail.pm
+
+lib/Math/Calc.pm: lib/Math/Calc.eyp lib/Math/Tail.pm
+#	${EYAPP}  ${EYAPPFLAGS} -o $@ lib/Math/Calc.eyp
+#	perl -Ilib -c $@
 
 myclean: veryclean
 	rm -f Math-Calc-*.tar.gz

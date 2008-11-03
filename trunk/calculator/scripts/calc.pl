@@ -1,27 +1,24 @@
 #!/usr/bin/perl -I../lib -I../../../lib -w
 use strict;
 use Math::Calc;
+use Math::Tail qw{uploadfile};
 use Getopt::Long;
-use Parse::Eyapp::Base qw{slurp_file};
 
 my $debug = 0;
 my $file = '';
-my $result = GetOptions ("debug!" => \$debug,  
-                         "file=s" => \$file
-);
+my $result = GetOptions (
+    "debug!" => \$debug,  
+    "file=s" => \$file,
+    );
 
 $debug = 0x1F if $debug;
 $file = shift if !$file && @ARGV; 
 
+my $prompt = "Expressions. Press CTRL-D (Unix) or CTRL-Z (Windows) to finish:\n";
 my $input;
-eval {
-  $input = slurp_file($file) 
-};
-if ($@) {
-  print "Expressions. Press CTRL-D (Unix) or CTRL-Z (Windows) to finish:\n";
-  local $/ = undef;
-  $input = <STDIN>;
-}
+$input = uploadfile($file, $prompt) if $file;
+$input = <STDIN> unless $input;
 
 my $parser = Math::Calc->new();
 $parser->Run( \$input, $debug );
+
