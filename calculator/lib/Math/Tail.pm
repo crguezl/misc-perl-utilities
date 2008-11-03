@@ -1,6 +1,6 @@
 package Math::Tail;
 use base qw(Exporter);
-our @EXPORT = qw(_Error make_lexer Run);
+our @EXPORT = qw(_Error make_lexer Run uploadfile);
 
 sub _Error {
   my $parser = shift;
@@ -54,6 +54,21 @@ sub Run {
       yyerror => \&_Error,
       yydebug => $yydebug, # 0x1F
     );
+}
+
+sub uploadfile {
+  my $file = shift;
+  my $msg = shift;
+
+  eval {
+    $input = Parse::Eyapp::Base::slurp_file($file) 
+  };
+  if ($@) {
+    print $msg;
+    local $/ = undef;
+    $input = <STDIN>;
+  }
+  return $input;
 }
 
 1;
