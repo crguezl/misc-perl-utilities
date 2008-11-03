@@ -1,12 +1,12 @@
 #!/usr//bin/perl -w
 use strict;
-use File::Temp;
+use File::Temp qw{tempdir};
 
 my $diff = $ENV{DIFF} || 'tkdiff';
 my $svnexport = $ENV{SVNEXPORT} || 'svn export';
 
 my $file = pop;
-my $dir = File::Temp->newdir();
+my $dir = tempdir();
 my $fname = "$dir/repository_${file}";
 my $argv = "@ARGV";
 
