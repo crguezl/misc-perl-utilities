@@ -2,5 +2,3 @@ Changes
 Makefile.PL
 MANIFEST
 README
-t/Misc-Utilities.t
-lib/Misc/Utilities.pm
