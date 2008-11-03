@@ -10,9 +10,7 @@ This is an introductory example used in _Procesadores_ _de_
 _Lenguajes_ ([http://nereida.deioc.ull.es/~pl/perlexamples PL])
 to illustrate the use of [http://search.cpan.org/perldoc?Parse::Eyapp Parse::Eyapp].
 
-  * To get a copy of the Calculator example (an introduction to Parse::Eyapp)
-    issue the following command:
-
+  * To get a copy of the Calculator example (an introduction to Parse::Eyapp) issue the following command:
 {{{
 svn checkout http://misc-perl-utilities.googlecode.com/svn/trunk/calculator
 }}}
