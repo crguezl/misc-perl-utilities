@@ -9,7 +9,7 @@ my $MACHINES     = $ENV{REMOTEMACHINES} || 'orion beowulf';
 WriteMakefile(
     NAME              => 'Math::Calc',
     VERSION_FROM      => 'lib/Math/Calc.eyp',
-    PREREQ_PM         => {}, # e.g., Module::Name => 1.1
+    PREREQ_PM         => { 'Parse::Eyapp' => '1.124', 'Devel::Cover' => '0.64', 'GRID::Machine' => '0.101', }, # e.g., Module::Name => 1.1
     EXE_FILES         => [ 'scripts/calc.pl' ],
     ABSTRACT_FROM     => 'lib/Math/Calc.pod', # retrieve abstract from pod
     AUTHOR            => 'Procesadores de Lenguaje <casiano@ull.es>',
