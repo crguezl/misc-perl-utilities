@@ -14,3 +14,5 @@ to illustrate the use of [http://search.cpan.org/perldoc?Parse::Eyapp Parse::Eya
 {{{
 svn checkout http://misc-perl-utilities.googlecode.com/svn/trunk/calculator
 }}}
+
+  * To have a look at the files visit the link http://code.google.com/p/misc-perl-utilities/source/browse/#svn/trunk/calculator
