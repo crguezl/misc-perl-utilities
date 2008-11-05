@@ -63,8 +63,10 @@ public: calc dist
 
 google:
 	svn commit -m 'Going to synchronize with Google-Code misc-perl-utilities repository'
+	rm -fR /tmp/google-calculator
 	svn checkout https://misc-perl-utilities.googlecode.com/svn/trunk/calculator /tmp/google-calculator --username casiano.rodriguez.leon
-	cd /tmp/google-calculator; svn export svn+ssh://casiano@orion.pcg.ull.es/var/svn/casiano/PL/YappWithDefaultAction/trunk/examples/Calculator
+	cd /tmp/google-calculator; \
+    svn export --force svn+ssh://casiano@orion.pcg.ull.es/var/svn/casiano/PL/YappWithDefaultAction/trunk/examples/Calculator .
 	echo issue a commit in /tmp/google-calculator!
 EOM
 }
