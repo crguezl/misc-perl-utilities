@@ -70,7 +70,7 @@ google:
 	cd /tmp/google-calculator; \
     svn export --force svn+ssh://casiano@orion.pcg.ull.es/var/svn/casiano/PL/YappWithDefaultAction/trunk/examples/Calculator .
 	echo issue a commit in /tmp/google-calculator!
-	echo pushd /tmp/google-calculator; svn commit
+	echo svn commit /tmp/google-calculator
 EOM
 }
 
