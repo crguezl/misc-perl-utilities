@@ -16,3 +16,7 @@ svn checkout http://misc-perl-utilities.googlecode.com/svn/trunk/calculator
 }}}
 
   * To have a look at the files visit the link http://code.google.com/p/misc-perl-utilities/source/browse/#svn/trunk/calculator
+
+  * An explanation (Spanish) of the contents is in http://nereida.deioc.ull.es/~pl/perlexamples/section_ungeneradordeanalizadoressintacticos.html
+
+  * More resources in the [http://0809.campusvirtual.ull.es/course/view.php?id=9088 PL at UDV page]
