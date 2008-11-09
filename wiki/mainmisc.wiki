@@ -15,6 +15,8 @@ to illustrate the use of [http://search.cpan.org/perldoc?Parse::Eyapp Parse::Eya
 svn checkout http://misc-perl-utilities.googlecode.com/svn/trunk/calculator
 }}}
 
+This is preferable to download the tar.gz file at  http://misc-perl-utilities.googlecode.com/files/Math-Calc-1.0.tar.gz. The last is older.
+
   * To have a look at the files visit the link http://code.google.com/p/misc-perl-utilities/source/browse/#svn/trunk/calculator
 
   * An explanation (Spanish) of the contents is in http://nereida.deioc.ull.es/~pl/perlexamples/section_ungeneradordeanalizadoressintacticos.html
