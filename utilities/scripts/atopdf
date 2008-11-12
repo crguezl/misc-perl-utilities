@@ -1,0 +1,24 @@
+#!/usr/bin/perl -w
+# Author: Casiano
+
+use strict;
+
+(@ARGV > 0) or die "Usage:\n\t$0 [-nodef] [a2ps args] -o outputfile\n";
+"@ARGV" =~ /-o\s*(\S+)/ or die "Option -o must be specified\n";
+my $filename = $1;
+if ($filename =~ /(.+)\.pdf$/i) {
+  $filename = $1 
+}
+my $defaults = "--font-size=8 --line-numbers=5 --portrait --columns=1";
+if ((@ARGV > 0) and ($ARGV[0] eq '-nodef')) {
+  $defaults = "";
+  shift @ARGV;
+}
+my $command=<<"EOL"
+a2ps $defaults @ARGV $filename  -o $filename.ps >& /dev/null
+ps2pdf $filename.ps $filename.pdf
+rm -f $filename.ps
+EOL
+;
+
+system $command;
