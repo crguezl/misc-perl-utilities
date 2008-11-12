@@ -2,3 +2,8 @@ Changes
 Makefile.PL
 MANIFEST
 README
+scripts/atopdf
+scripts/latex2htmllabels
+scripts/pmrm
+scripts/splicepath
+scripts/svntkdiff
