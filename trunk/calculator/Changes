@@ -1,10 +1,5 @@
 Revision history for Perl extension Math::Calc.
 
-1.1 mié nov  5 11:29:31 WET 2008
-  - Using google-code
-    URL: https://misc-perl-utilities.googlecode.com/svn/trunk/calculator
-    Revisión: 19
-
 0.01  Wed Oct 29 10:07:42 2008
 	- original version; created by h2xs 1.23 with options
 		-XA -n Math::Calc
