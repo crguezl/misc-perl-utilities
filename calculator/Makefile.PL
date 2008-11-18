@@ -61,6 +61,15 @@ coverage: calc
 public: calc dist
 	cp ${DISTVNAME}.tar.gz <<PUBLIC_PLACE>>
 
+.PHONY: tags
+
+tags:
+	ctags -f tags --recurse --totals \
+		--exclude=blib \
+		--exclude=.svn \
+		--exclude='*~' \
+		--languages=Perl --langmap=Perl:+.t \
+
 # Commit to group repository; Checkout google-code copy; Export from group repository overwriting files; 
 # commit to google. The editor may be open twice asking for messages
 google:
