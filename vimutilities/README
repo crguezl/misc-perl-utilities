@@ -1,0 +1,48 @@
+=head1 NAME
+ 
+vimeyapp - Several vim related utilities for eyapp
+
+=head1 Download
+
+=over 2
+
+=item * svn checkout http://misc-perl-utilities.googlecode.com/svn/trunk/vimeyapp
+
+=back
+
+=head1 DESCRIPTION
+
+  .
+  |--.ctags              # ctags configuration file with eyapp definitions
+  |--.vimrc              # .vimrc example for use with Perl and eyapp
+  |--MANIFEST            # lists of files in this project
+  |--Makefile            
+  |--README              # This file: use perldoc README to read it
+  |--filetype.vim        # Associates .eyp and .yp files with eyapp syntax highlighting
+  `--syntax
+     `--eyapp.vim        # Eyapp syntax highlighting file
+
+=head1 SEE ALSO
+
+=over 2
+
+=item * L<Parse::Eyapp>
+
+=back
+
+=head1 AUTHOR
+ 
+Casiano Rodriguez-Leon (casiano@ull.es)
+
+=head1 LICENCE AND COPYRIGHT
+ 
+Copyright (c) 2008 Casiano Rodriguez-Leon (casiano@ull.es). All rights reserved.
+
+These modules are free software; you can redistribute it and/or
+modify it under the same terms as Perl itself. See L<perlartistic>.
+ 
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+
