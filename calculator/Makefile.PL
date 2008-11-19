@@ -27,11 +27,13 @@ sub MY::postamble {
 
 sub targets {
 
+# ctags --langdef=eyapp --langmap=eyapp:.eyp --regex-eyapp='/^([a-zA-Z][a-zA-Z0-9_]*[ \t]*:)/\1/' lib/Math/Calc.eyp
   return <<'EOM';
 EYAPP=eyapp
 # Set EYAPPENV environment variable to '-s' if you want a standalone
 # parser
 EYAPPFLAGS=-m Math::Calc ${EYAPPENV}
+PLTAGS=/usr/share/vim/vim71/tools/pltags.pl
 
 %.pm:%.eyp 
 	${EYAPP}  ${EYAPPFLAGS} -o $@ $*
@@ -64,11 +66,9 @@ public: calc dist
 .PHONY: tags
 
 tags:
-	ctags -f tags --recurse --totals \
-		--exclude=blib \
-		--exclude=.svn \
-		--exclude='*~' \
-		--languages=Perl --langmap=Perl:+.t \
+	ctags -f ytags
+	${PLTAGS} scripts/* lib/Math/*.pm lib/Math/*.eyp Makefile.PL 
+        # Remember to 'set tags=./tags,./ytags' in vim
 
 # Commit to group repository; Checkout google-code copy; Export from group repository overwriting files; 
 # commit to google. The editor may be open twice asking for messages
