@@ -11,7 +11,7 @@ a ctags definition file (.ctags) among others
 
  * To get a copy issue the following command:
 {{{
-svn checkout https://misc-perl-utilities.googlecode.com/svn/trunk/vimutilities
+svn checkout http://misc-perl-utilities.googlecode.com/svn/trunk/vimutilities
 }}}
 
   * See 
