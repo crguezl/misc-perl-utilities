@@ -66,9 +66,8 @@ public: calc dist
 .PHONY: tags
 
 tags:
-	ctags -f ytags
-	${PLTAGS} scripts/* lib/Math/*.pm lib/Math/*.eyp Makefile.PL 
-        # Remember to 'set tags=./tags,./ytags' in vim
+	${PLTAGS} scripts/*.pl lib/Math/Tail.pm lib/Math/*.eyp Makefile.PL 
+	ctags -a 
 
 # Commit to group repository; Checkout google-code copy; Export from group repository overwriting files; 
 # commit to google. The editor may be open twice asking for messages
