@@ -3,7 +3,7 @@
 " Maintainer:	Casiano Rodriguez-Leon <casiano.rodriguez.leon@gmail.com>
 " Last Change:	nov 15 WET 2008
 " Version:	1
-" URL:	
+" URL: http://nereida.deioc.ull.es/~vim/
 " License: Same as Vim
 " Limitations: If the .yp/.eyp file is really big you may need to increase 'maxmempattern'
 "
@@ -57,14 +57,9 @@ syn match	eyappCurlyError	"[{}]"
 
 " semantic actions
 syn region	eyappAction      matchgroup=eyappBlock start="{" end="}" contains=eyappAction,eyappKeyMethod,@perl 
-"syn region	eyappAction      matchgroup=eyappCurly start="{" end="}" contains=eyappAction contains=eyappKeyMethod contains=@perl
-"syn region	eyappAction	matchgroup=eyappCurly start="{" end="}" contains=ALLBUT,@eyappActionGroup contains=eyappKeyMethod contains=@perl
-"syn region	eyappAction      start="{" end="}" contains=eyappAction contains=eyappKeyMethod
 
 syn region      eyappHeader    matchgroup=eyappCurly start=/^[ \t]*%{/ end=/^[ \t]*%}/  contains=@perl,eyappKeyMethod
 syn region      eyappTail      matchgroup=eyappSectionSep start=/\(;[ \t\n]\+\)\@=%%/ end =/\%$/ contains=eyappKeyMethod,@perl 
-"syn region      eyappTail      start=/\(;[ \t\n]\+%%\)\@<=\([\s\n]\|.\)/ end =/\%$/
-"syn match       eyappTail      /^\([ \t]*%%[ \t]*\)\@<=\([^%]\|\n\|%[^%]\)*/
 
 syn match       eyappPerlSub  "\<sub\>\s\+"
 
@@ -101,7 +96,6 @@ if version >= 508 || !exists("did_eyapp_syn_inits")
   HiLink eyappSectionSep	Todo
   HiLink eyappSep	Delimiter
   HiLink eyappStmt	Statement
-" HiLink eyappStmt	Error
   HiLink eyappType	Type
   HiLink eyappcomment  Comment
 
@@ -113,5 +107,4 @@ endif
 
 let b:current_syntax = "eyapp"
 
-" vim: ts=15
 
