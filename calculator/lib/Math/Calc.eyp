@@ -6,7 +6,7 @@
 %right  '^'
 
 %{
-use Math::Tail;
+use base q{Math::Tail};
 my %s; # symbol table
 our $VERSION = '1.1';
 %}
