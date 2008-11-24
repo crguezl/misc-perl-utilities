@@ -57,10 +57,5 @@ exp:
 
 %%
 
-sub semantic_error {
-  my ($parser, $msg) = @_;
-
-  $parser->YYData->{ERRMSG} = $msg;
-  $parser->YYError; 
-}
-
+# In case is compiled with eyapp option -b
+__PACKAGE__->main unless caller;

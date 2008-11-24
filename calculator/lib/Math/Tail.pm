@@ -85,11 +85,17 @@ sub main {
 
   my $prompt = "Expressions. Press CTRL-D (Unix) or CTRL-Z (Windows) to finish:\n";
   my $input;
-  $input = uploadfile($file, $prompt) if $file;
-  $input = <STDIN> unless $input;
+  $input = uploadfile($file, $prompt);
 
   my $parser = $package->new();
   $parser->Run( \$input, $debug );
+}
+
+sub semantic_error {
+  my ($parser, $msg) = @_;
+
+  $parser->YYData->{ERRMSG} = $msg;
+  $parser->YYError; 
 }
 
 1;
