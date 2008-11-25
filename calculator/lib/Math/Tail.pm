@@ -1,4 +1,6 @@
 package Math::Tail;
+use warnings;
+use strict;
 use Getopt::Long;
 
 sub _Error {
@@ -59,6 +61,7 @@ sub uploadfile {
   my $file = shift;
   my $msg = shift;
 
+  my $input = '';
   eval {
     $input = Parse::Eyapp::Base::slurp_file($file) 
   };
