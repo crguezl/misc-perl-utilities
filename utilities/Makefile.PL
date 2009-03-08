@@ -1,7 +1,7 @@
 use warnings;
 use strict;
 use ExtUtils::MakeMaker;
-my @scripts = qw(latex2htmllabels pmrm splicepath svntkdiff atopdf);
+my @scripts = qw(latex2htmllabels pmrm splicepath svntkdiff atopdf mantops.pl);
 WriteMakefile(
     NAME              => 'Misc::Utilities',
     VERSION           => '1.0', 
