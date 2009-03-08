@@ -1,5 +1,0 @@
-%strict
-%token NUM
-%%
-expr: NUM;
-%%
