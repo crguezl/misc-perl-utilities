@@ -1,0 +1,20 @@
+#!/usr/bin/perl -w
+use strict;
+use Pod::Simple::RTF;
+my $file = shift || die "provide a file name\n";
+my $latin = $file;
+$latin = "$file.latin";
+
+my $parser = Pod::Simple::RTF->new();
+$parser->doc_lang(1034);
+
+my $outfile = $file;
+$outfile =~ s/\.\w*$/.rtf/;
+
+open STDOUT, "> $outfile";
+
+system("iconv -f UTF-8 -t ISO_8859-15 $file > $latin") and die "Can't execute iconv\n";
+
+Pod::Simple::RTF->filter($latin)->any_errata_seen;  
+
+unlink $latin;
