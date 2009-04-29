@@ -2,8 +2,9 @@
 use strict;
 
 my $topic = shift || die "Provide a topic\n";
+my $section = shift || '';
 
-my $where = `man -w $topic`;
+my $where = `man -w $section $topic`;
 die "Can't find man page for $topic\n" unless length($where) && !$?;
 chomp($where);
 system("man -l -Tps $where > /tmp/$topic.ps");
