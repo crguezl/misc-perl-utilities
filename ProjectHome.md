@@ -1,0 +1,1 @@
+This project collects a set of scripts that don't fit in any specific project. Topics include svn, latex, education and others
